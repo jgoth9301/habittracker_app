@@ -70,7 +70,6 @@ class Counter:
             # Close the cursor to ensure cleanup
             cur.close()
 
-
     def reset(self, db):
         """
         Resets the counter by deleting all associated tracking data
@@ -112,7 +111,6 @@ class Counter:
             # Close the cursor to ensure cleanup
             cur.close()
 
-
     def store(self, db):
         """
         Store the counter in the database.
@@ -121,7 +119,6 @@ class Counter:
             db: The database connection object.
         """
         add_counter(db, self.name, self.description, self.interval, self.period, self.creation)
-
 
     def add_event(self, db, date: str = None):
         """
