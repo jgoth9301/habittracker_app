@@ -2,3 +2,4 @@ pytest
 questionary
 matplotlib
 pandas
+numby
