@@ -33,7 +33,7 @@ def create_table(db):
 
     cur = db.cursor()
 
-    # Tabelle "counter" erstellen, falls sie nicht existiert
+    # Create the 'counter' table if it does not already exist
     cur.execute("""
         CREATE TABLE IF NOT EXISTS counter (
             name TEXT PRIMARY KEY,
@@ -49,13 +49,13 @@ def create_table(db):
         INSERT OR IGNORE INTO counter (name, description, interval, period, creation) 
         VALUES (?, ?, ?, ?, ?)
     """, [
-        ('Meditation', '10 minutes of daily meditation for improved mental well-being', 'daily', '365', '2021-12-01'),
-        ('Reading', 'Read a book for 20 minutes each day', 'daily', '365', '2021-12-01'),
-        ('Exercise', 'Exercise for 30 minutes every day', 'daily', '365', '2021-01-01'),
+        ('Meditation', '10 minutes of daily meditation for improved mental well-being', 'daily', '31', '2021-12-01'),
+        ('Reading', 'Read a book for 20 minutes each day', 'daily', '31', '2021-12-01'),
+        ('Exercise', 'Exercise for 30 minutes every day', 'daily', '31', '2021-12-01'),
         ('Cleaning', 'Completely clean your house every month', 'monthly', '12', '2021-01-01'),
     ])
 
-    # Tabelle "tracker" erstellen, falls sie nicht existiert
+    # Create the 'tracker' table if it does not already exist
     cur.execute("""
         CREATE TABLE IF NOT EXISTS tracker (
             date DATE NOT NULL,
@@ -64,7 +64,7 @@ def create_table(db):
         )
     """)
 
-    # Tabelle "predefinedHabits" erstellen, falls sie nicht existiert
+    # Create the 'predefinedHabits' table if it does not already exist"
     cur.execute("""
         CREATE TABLE IF NOT EXISTS predefinedHabits (
             name TEXT PRIMARY KEY,
@@ -73,7 +73,7 @@ def create_table(db):
         )
     """)
 
-    # Definition der Standard-Habits außerhalb des if-Blocks
+    # Definition of predefined habits for initial load
     prehabits = [
         ('Meditation', '10 minutes of daily meditation for improved mental well-being', 'daily'),
         ('Reading', 'Read a book for 20 minutes each day', 'daily'),
@@ -362,6 +362,38 @@ def initial_load_tracker(cur):
         ('2021-12-30', 'Reading'),
         ('2021-12-31', 'Reading'),
 
+        ('2021-12-01', 'Exercise'),
+        ('2021-12-02', 'Exercise'),
+        ('2021-12-03', 'Exercise'),
+        ('2021-12-04', 'Exercise'),
+        ('2021-12-05', 'Exercise'),
+        ('2021-12-06', 'Exercise'),
+        ('2021-12-07', 'Exercise'),
+        ('2021-12-08', 'Exercise'),
+        ('2021-12-09', 'Exercise'),
+        ('2021-12-10', 'Exercise'),
+        ('2021-12-11', 'Exercise'),
+        ('2021-12-12', 'Exercise'),
+        ('2021-12-13', 'Exercise'),
+        ('2021-12-14', 'Exercise'),
+        ('2021-12-15', 'Exercise'),
+        ('2021-12-16', 'Exercise'),
+        ('2021-12-17', 'Exercise'),
+        ('2021-12-18', 'Exercise'),
+        ('2021-12-19', 'Exercise'),
+        ('2021-12-20', 'Exercise'),
+        ('2021-12-21', 'Exercise'),
+        ('2021-12-22', 'Exercise'),
+        ('2021-12-23', 'Exercise'),
+        ('2021-12-24', 'Exercise'),
+        ('2021-12-25', 'Exercise'),
+        ('2021-12-26', 'Exercise'),
+        ('2021-12-27', 'Exercise'),
+        ('2021-12-28', 'Exercise'),
+        ('2021-12-29', 'Exercise'),
+        ('2021-12-30', 'Exercise'),
+        ('2021-12-31', 'Exercise'),
+
         ('2021-01-01', 'Cleaning'),
         ('2021-02-02', 'Cleaning'),
         ('2021-03-03', 'Cleaning'),
@@ -381,7 +413,7 @@ def initial_load_tracker(cur):
         SELECT date, counterName FROM tracker
     """
     cur.execute(existing_data_query)
-    existing_data = set(cur.fetchall())  # Bestehende Daten in ein Set umwandeln für schnelle Überprüfung
+    existing_data = set(cur.fetchall())
 
     # Step 2: Filter new data
     new_data = [entry for entry in tracking_data if entry not in existing_data]
