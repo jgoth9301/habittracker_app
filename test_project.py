@@ -1,6 +1,5 @@
 from counter import Counter
 from db import get_db, add_counter, increment_counter, get_counter_data
-from analyse import total_habit
 
 class TestCounter:
 
