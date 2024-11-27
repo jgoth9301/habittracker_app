@@ -132,7 +132,7 @@ def analyze_streak(db, habit_name):
         habit_name: The name of the habit to analyze.
 
     Returns:
-        str: A report of the habit streak analysis.
+        str: A report of the habit streak analysis for the user.
     """
     try:
         # Fetch habit details from the database
